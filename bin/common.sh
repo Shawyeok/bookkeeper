@@ -295,11 +295,13 @@ build_logging_opts() {
   LOG_DIR=$2
   LOG_FILE=$3
   LOGGER=$4
+  LOG_BACKUP=${BOOKIE_LOG_BACKUP:-"1"}
 
   echo "-Dlog4j.configuration=`basename ${CONF_FILE}` \
     -Dbookkeeper.root.logger=${LOGGER} \
     -Dbookkeeper.log.dir=${LOG_DIR} \
-    -Dbookkeeper.log.file=${LOG_FILE}"
+    -Dbookkeeper.log.file=${LOG_FILE} \
+    -Dbookkeeper.log.backup=${LOG_BACKUP}"
 }
 
 build_cli_logging_opts() {
